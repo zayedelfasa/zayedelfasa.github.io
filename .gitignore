@@ -23,7 +23,6 @@ chrome-user-data
 .vscode
 *.swp
 *.swo
-.vscode
 .ionide
 
 packages/react-devtools-core/dist
