@@ -17,6 +17,8 @@ import './App.css';
 import reactnative from './app/assets/images/reactnative.png';
 import flutter from './app/assets/images/flutter.png';
 import multipass from './app/assets/images/multipass.png';
+import colors from './app/styles/colors';
+import portofolio from './app/data/portofolio.json';
 
 const useStyles = makeStyles({
   root: {
@@ -32,14 +34,16 @@ const App = () => {
    * @param {Image} image
    * @param {String} desc
    */
-  const CardView = ({ title, image, desc }) => {
+  const CardView = ({ title, image, desc, width, height }) => {
     return (
-      <Card className={classes.root} elevation={0} variant="elevation" style={{ borderRadius: 10 }}>
+      <Paper className={classes.root} variant="outlined" style={{ borderRadius: 10 }}>
         <Typography component="div" style={{
           justifyContent: "center",
           alignItems: "center"
         }}>
-          <ImageView image={image} />
+          <ImageView
+            image={image} width={width} height={height}
+          />
         </Typography>
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
@@ -49,23 +53,40 @@ const App = () => {
             {desc}
           </Typography>
         </CardContent>
-      </Card>
+      </Paper>
     );
   }
 
-  const ImageView = ({ image }) => {
+  /**
+   * 
+   * @param {require} image
+   * @param {number} width
+   * @param {number} height
+   */
+  const ImageView = ({ image, width, height }) => {
     return (
-      <Grid container spacing={0} direction="column" alignItems="start" justify="start">
-        <Avatar src={image} style={{ width: 100, height: 100, padding: 18 }} />
+      <Grid container spacing={0} direction="column" alignItems="center" justify="center">
+        <Avatar src={image} style={{ width: width, height: height, padding: 18 }} />
       </Grid>
     );
   }
 
+  /** 
+   * @param {*} param0 
+   */
+  const PortofolioView = ({ }) => {
+
+  }
+
+  /**
+   * @render component
+   * @return <View />
+   */
   return (
     <React.Fragment>
-      <Container style={{ backgroundColor: "#ffffff" }} >
-        <Container maxWidth="lg" style={{ backgroundColor: "#ffffff" }}>
-          <Grid component="div" style={{ height: '100vh', backgroundColor: "#ffffff" }}>
+      <Container style={{ backgroundColor: colors.default_white }} >
+        <Container maxWidth="lg" style={{ backgroundColor: colors.default_white }}>
+          <Grid component="div" style={{ height: '100vh', backgroundColor: colors.default_white }}>
             <Typography style={{ fontSize: Dimensi.bigFont, textAlign: "start", paddingTop: 10 }}>
               Zayed Elfasa
             </Typography>
@@ -74,24 +95,55 @@ const App = () => {
             }}>
               Let's Code and Share...
             </Typography>
-            <Grid container spacing={3} style={{ paddingTop: 24 }}>
+            <Grid container spacing={0} style={{ paddingTop: 24 }}>
               <Grid item xs>
-                <CardView title="React Native" image={reactnative}
+                <CardView title="React Native" image={reactnative} width={130} height={130}
                   desc="Library turunan dari React yang digunakan untuk membuat aplikasi Android dan iOS."
                 />
               </Grid>
               <Grid item xs>
-                <CardView title="Flutter" image={flutter}
+                <CardView title="Flutter" image={flutter} width={100} height={100}
                   desc="UI Kit dari Google untuk membuat aplikasi yang berjalan secara cross-platform."
                 />
               </Grid>
               <Grid item xs>
-                <CardView title="Multipass Ubuntu" image={multipass}
+                <CardView title="Multipass Ubuntu" image={multipass} width={150} height={150}
                   desc="Mini Cloud Ubuntu yang dijalankan secara virtual di dalam Sistem Operasi Anda."
                 />
               </Grid>
             </Grid>
-            
+            <Grid component="div" style={{ height: '100vh', backgroundColor: colors.default_white }}>
+              <Typography style={{ fontSize: Dimensi.bigFont, textAlign: "start", paddingTop: 10 }}>
+                Portofolio Saya
+            </Typography>
+              <Typography variant="body2" color="textSecondary" component="div" style={{
+                paddingTop: -10
+              }}>
+                Project yang pernah dibuat dan ada yang sedang berlanjut
+            </Typography>
+              <Grid container spacing={0} style={{ paddingTop: 24 }}>
+                <Grid container spacing={0} >
+                  {
+                    portofolio.map((val, index) => {
+                      return (
+                        <Grid container item>
+                          {/* <div>{val.judul}</div> */}
+                          <div>
+                            
+                          </div>
+                          <div style={{ paddingBottom: 8 }}>
+                            <Paper variant="outlined" style={{ padding: 8 }}>
+                              <div>{val.judul}</div>
+                              <div>{val.deskripsi}</div>
+                            </Paper>
+                          </div>
+                        </Grid>
+                      );
+                    })
+                  }
+                </Grid>
+              </Grid>
+            </Grid>
           </Grid>
         </Container>
       </Container>
