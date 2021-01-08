@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "name": "gmail",
+    "location": "https://raw.githubusercontent.com//zayedelfasa/myassets/main/icons/gmail.png"
+  },
+  {
+    "id": 2,
+    "name": "github",
+    "location": "https://raw.githubusercontent.com//zayedelfasa/myassets/main/icons/github.png"
+  },
+  {
+    "id": 3,
+    "name": "linkedin",
+    "location": "https://raw.githubusercontent.com//zayedelfasa/myassets/main/icons/linkedin.png"
+  }
+]
