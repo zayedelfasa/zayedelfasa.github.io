@@ -5,7 +5,7 @@
 
 import React from 'react';
 import {
-  Container, CssBaseline, Typography, Card, CardHeader, CardMedia, CardContent, CardActions, Collapse, Avatar, IconButton, Grid, Paper
+  Container, CssBaseline, Typography, Card, CardHeader, CardMedia, CardContent, CardActions, Collapse, Avatar, IconButton, Grid, Paper, List
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { red } from '@material-ui/core/colors';
@@ -19,6 +19,7 @@ import flutter from './app/assets/images/flutter.png';
 import multipass from './app/assets/images/multipass.png';
 import colors from './app/styles/colors';
 import portofolio from './app/data/portofolio.json';
+import contact from './app/data/contact.json';
 
 const useStyles = makeStyles({
   root: {
@@ -59,9 +60,9 @@ const App = () => {
 
   /**
    * 
-   * @param {require} image
-   * @param {number} width
-   * @param {number} height
+   * @param image: Object
+   * @param width: Number
+   * @param height: Number
    */
   const ImageView = ({ image, width, height }) => {
     return (
@@ -71,11 +72,24 @@ const App = () => {
     );
   }
 
-  /** 
-   * @param {*} param0 
-   */
   const PortofolioView = ({ }) => {
 
+  }
+
+  /**
+   * @param item: Object
+   */
+  const ContactView = ({ item }) => {
+    showLog(`ContactView with ${item.location}`);
+    return (
+      <div style={{ paddingRight: 12, paddingTop: 12 }}>
+        <Avatar src={item.location} style={{ width: 32, height: 32, padding: 4 }} />
+      </div>
+    );
+  }
+
+  const showLog = (message) => {
+    console.log(`App.js : ${message}`);
   }
 
   /**
@@ -87,14 +101,27 @@ const App = () => {
       <Container style={{ backgroundColor: colors.default_white }} >
         <Container maxWidth="lg" style={{ backgroundColor: colors.default_white }}>
           <Grid component="div" style={{ height: '100vh', backgroundColor: colors.default_white }}>
-            <Typography style={{ fontSize: Dimensi.bigFont, textAlign: "start", paddingTop: 10 }}>
-              Zayed Elfasa
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="div" style={{
-              paddingTop: -10
-            }}>
-              Let's Code and Share...
-            </Typography>
+            <Grid container spacing={0} style={{}}>
+              <Grid container item>
+                <Typography style={{ fontSize: Dimensi.bigFont, textAlign: "start", paddingTop: 10 }}>
+                  Zayed Elfasa
+                </Typography>
+              </Grid>
+              <Grid container item>
+                <Typography variant="body2" color="textSecondary" component="div" style={{
+                  paddingTop: -10
+                }}>
+                  Let's Code and Share...
+                </Typography>
+                <Grid container item>
+                  {
+                    contact.map((val, index) => {
+                      return <ContactView item={val} />
+                    })
+                  }
+                </Grid>
+              </Grid>
+            </Grid>
             <Grid container spacing={0} style={{ paddingTop: 24 }}>
               <Grid item xs>
                 <CardView title="React Native" image={reactnative} width={130} height={130}
@@ -112,37 +139,50 @@ const App = () => {
                 />
               </Grid>
             </Grid>
-            <Grid component="div" style={{ height: '100vh', backgroundColor: colors.default_white }}>
+            <Grid component="div" style={{ backgroundColor: colors.default_white }}>
               <Typography style={{ fontSize: Dimensi.bigFont, textAlign: "start", paddingTop: 10 }}>
-                Portofolio Saya
-            </Typography>
+                Portofolio
+              </Typography>
               <Typography variant="body2" color="textSecondary" component="div" style={{
                 paddingTop: -10
               }}>
                 Project yang pernah dibuat dan ada yang sedang berlanjut
-            </Typography>
+              </Typography>
               <Grid container spacing={0} style={{ paddingTop: 24 }}>
-                <Grid container spacing={0} >
+                <List>
                   {
                     portofolio.map((val, index) => {
+
                       return (
-                        <Grid container item>
-                          {/* <div>{val.judul}</div> */}
-                          <div>
-                            
-                          </div>
-                          <div style={{ paddingBottom: 8 }}>
-                            <Paper variant="outlined" style={{ padding: 8 }}>
+                        <Paper variant="outlined" style={{ padding: 8, marginBottom: 8 }}>
+                          <div style={{ flexDirection: "row", display: "flex" }}>
+                            <div style={{
+                              backgroundImage:`url(${"https://raw.githubusercontent.com/zayedelfasa/myassets/main/images/workr.png"})`,
+                              width:150,
+                              height: 100,
+                              borderRadius: 10
+                            }} />
+                            <div style={{ flexDirection: "column" }}>
                               <div>{val.judul}</div>
                               <div>{val.deskripsi}</div>
-                            </Paper>
+                            </div>
                           </div>
-                        </Grid>
+                        </Paper>
                       );
                     })
                   }
-                </Grid>
+                </List>
               </Grid>
+            </Grid>
+            <Grid component="div" style={{ height: '100vh', backgroundColor: colors.default_white }}>
+              <Typography style={{ fontSize: Dimensi.bigFont, textAlign: "start", paddingTop: 10 }}>
+                Kontak
+              </Typography>
+              <Typography variant="body2" color="textSecondary" component="div" style={{
+                paddingTop: -10
+              }}>
+                Bisa kontak saya melalui beberapa media di bawah ini.
+              </Typography>
             </Grid>
           </Grid>
         </Container>
