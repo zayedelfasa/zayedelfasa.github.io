@@ -112,6 +112,8 @@ const App = () => {
                 />
               </Grid>
             </Grid>
+
+            {/* PORTOFOLIO */}
             <Grid component="div" style={{ height: '100vh', backgroundColor: colors.default_white }}>
               <Typography style={{ fontSize: Dimensi.bigFont, textAlign: "start", paddingTop: 10 }}>
                 Portofolio Saya
@@ -144,6 +146,8 @@ const App = () => {
                 </Grid>
               </Grid>
             </Grid>
+            {/* END */}
+            
           </Grid>
         </Container>
       </Container>
