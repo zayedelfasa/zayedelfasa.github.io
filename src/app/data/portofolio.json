@@ -1,19 +1,25 @@
 [
   {
     "id": "001",
-    "judul": "Aplikasi MoLearn",
+    "judul": "Aplikasi MoLearn (2018)",
     "link_tujuan": "",
     "deskripsi": "Aplikasi untuk pembelajaran siswa berbasis Android."
   },
   {
     "id": "002",
-    "judul": "Aplikasi Workr",
+    "judul": "Aplikasi Workr (2019 - Sekarang)",
     "link_tujuan": "",
     "deskripsi": "Aplikasi sebagai pihak yang menghubungkan daily working dengan perusahaan yang membutuhkan."
   },
   {
+    "id": "004",
+    "judul": "Spaca X Schedule (2019)",
+    "link_tujuan": "",
+    "deskripsi": "Aplikasi yang menampilkan jadwal Roket yang akan terbang di stasiun Space X"
+  },
+  {
     "id": "003",
-    "judul": "Dart Note",
+    "judul": "Dart Note (2019 - Sekarang)",
     "link_tujuan": "",
     "deskripsi": "Sebuah tutorial yang ditulis untuk keperluan code saya ketika membuat project flutter."
   }

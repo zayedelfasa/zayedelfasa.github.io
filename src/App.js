@@ -72,10 +72,6 @@ const App = () => {
     );
   }
 
-  const PortofolioView = ({ }) => {
-
-  }
-
   /**
    * @param item: Object
    */
@@ -85,6 +81,32 @@ const App = () => {
       <div style={{ paddingRight: 12, paddingTop: 12 }}>
         <Avatar src={item.location} style={{ width: 32, height: 32, padding: 4 }} />
       </div>
+    );
+  }
+
+  /**
+   * @param props: Any
+   */
+  const PortofolioView = ({ item, index }) => {
+    return (
+      <Paper variant="outlined" style={{ padding: 8, marginBottom: 8, borderRadius: 15 }}>
+        <div style={{ flexDirection: "row", display: "flex" }}>
+          <div style={{
+            backgroundImage: `url(${"https://raw.githubusercontent.com/zayedelfasa/myassets/main/images/workr.png"})`,
+            width: 150,
+            height: 100,
+            borderRadius: 10
+          }} />
+          <div style={{ flexDirection: "column", paddingLeft: 10, paddingTop: 10 }}>
+            <Typography gutterBottom variant="h5" component="h2">
+              {item.judul}
+            </Typography>
+            <Typography variant="body2" color="textSecondary" component="p">
+              {item.deskripsi}
+            </Typography>
+          </div>
+        </div>
+      </Paper>
     );
   }
 
@@ -152,37 +174,11 @@ const App = () => {
                 <List>
                   {
                     portofolio.map((val, index) => {
-
-                      return (
-                        <Paper variant="outlined" style={{ padding: 8, marginBottom: 8 }}>
-                          <div style={{ flexDirection: "row", display: "flex" }}>
-                            <div style={{
-                              backgroundImage:`url(${"https://raw.githubusercontent.com/zayedelfasa/myassets/main/images/workr.png"})`,
-                              width:150,
-                              height: 100,
-                              borderRadius: 10
-                            }} />
-                            <div style={{ flexDirection: "column" }}>
-                              <div>{val.judul}</div>
-                              <div>{val.deskripsi}</div>
-                            </div>
-                          </div>
-                        </Paper>
-                      );
+                      return <PortofolioView item={val} index={index} />
                     })
                   }
                 </List>
               </Grid>
-            </Grid>
-            <Grid component="div" style={{ height: '100vh', backgroundColor: colors.default_white }}>
-              <Typography style={{ fontSize: Dimensi.bigFont, textAlign: "start", paddingTop: 10 }}>
-                Kontak
-              </Typography>
-              <Typography variant="body2" color="textSecondary" component="div" style={{
-                paddingTop: -10
-              }}>
-                Bisa kontak saya melalui beberapa media di bawah ini.
-              </Typography>
             </Grid>
           </Grid>
         </Container>
